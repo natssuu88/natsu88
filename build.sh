@@ -1,6 +1,6 @@
 # sync rom
 repo init --depth=1 --no-repo-verify -u https://github.com/bananadroid/android_manifest.git -b 13 -g default,-mips,-darwin,-notdefault
-git clone https://github.com/natssuu88/local_manifest --depth 1 -b banana-13 .repo/local_manifests
+git clone https://github.com/natssuu88/local_manifest --depth 1 -b master .repo/local_manifests
 repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
 
 # build rom
@@ -10,7 +10,7 @@ timeStart
 source build/envsetup.sh
 export BUILD_USERNAME=$BUILD_USERNAME
 export BUILD_HOSTNAME=$BUILD_HOSTNAME
-lunch banana_lavender-userdebug
+lunch banana_whyred-userdebug
 mkfifo reading # Jangan di Hapus
 tee "${BUILDLOG}" < reading & # Jangan di Hapus
 build_message "Building Started" # Jangan di Hapus
