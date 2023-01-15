@@ -7,7 +7,7 @@ task:
   only_if: $CIRRUS_REPO_OWNER == 'natssuu88'
   timeout_in: 120m
   container:
-    image: ifeincarnation/ubuntu:latest
+    image: natsu88/ubuntu:latest
     cpu: 8
     memory: 32G
 
