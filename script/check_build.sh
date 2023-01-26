@@ -10,7 +10,7 @@ device=$(grep lunch $CIRRUS_WORKING_DIR/build.sh -m 1 | cut -d ' ' -f 2 | cut -d
 build_gagal=$(grep 'FAILED:' $WORKDIR/rom/$name_rom/build.log -m1 || true)
 if [[ $build_gagal == *'FAILED:'* ]]; then
     cd $WORKDIR/rom/$name_rom
-    pesan ⛔ Build gagal...
+    msg ⛔ Build gagal...
     curl -F document=@build.log "https://api.telegram.org/bot${TG_TOKEN}/sendDocument" \
     -F chat_id="${TG_CHAT_ID}" \
     -F "disable_web_page_preview=true" \
@@ -20,8 +20,8 @@ fi
 
 build_berhasil=$(grep '#### build completed successfully' $WORKDIR/rom/$name_rom/build.log -m1 || true)
 if [[ $build_berhasil == *'#### build completed successfully'* ]]; then
-    pesan ✅ Build selesai 100%
+    msg ✅ Build selesai 100%
 else
-    pesan ❌ Build belum selesai...
+    msg ❌ Build belum selesai...
     echo Build ROM gagal! kami melanjutkan dengan mengunggah ccache...
 fi
