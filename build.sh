@@ -7,7 +7,8 @@ repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync 
 source $CIRRUS_WORKING_DIR/script/config
 timeStart
 
-source build/envsetup.sh
+. build/envsetup.sh
+export TZ=Asia/Jakarta
 export BUILD_USERNAME=$BUILD_USERNAME
 export BUILD_HOSTNAME=$BUILD_HOSTNAME
 lunch exthm_whyred-userdebug
@@ -15,7 +16,7 @@ mkfifo reading # Jangan di Hapus
 tee "${BUILDLOG}" < reading & # Jangan di Hapus
 build_message "Building Started" # Jangan di Hapus
 progress & # Jangan di Hapus
-make bacon > reading #& sleep 95m # Jangan di hapus text line (> reading)
+make bacon -j8  > reading #& sleep 95m # Jangan di hapus text line (> reading)
 
 retVal=$?
 timeEnd
