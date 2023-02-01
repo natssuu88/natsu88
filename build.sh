@@ -10,21 +10,13 @@ timeStart
 . build/envsetup.sh
 export BUILD_USERNAME=$BUILD_USERNAME
 export BUILD_HOSTNAME=$BUILD_HOSTNAME
-export ALLOW_MISSING_DEPENDENCIES=true
-export PATH="/usr/lib/ccache:$PATH"
-export CCACHE_DIR=$WORKDIR/ccache
-export CCACHE_EXEC=$(which ccache)
-export USE_CCACHE=1
-export CCACHE_COMPRESS=true
-which ccache
-ccache -M 20
-ccache -z
 lunch havoc_whyred-userdebug
+export ALLOW_MISSING_DEPENDENCIES=true
 mkfifo reading # Jangan di Hapus
 tee "${BUILDLOG}" < reading & # Jangan di Hapus
 build_message "Building Started" # Jangan di Hapus
 progress & # Jangan di Hapus
-mka bacon > reading & sleep 95m # Jangan di hapus text line (> reading)
+brunch  > reading & sleep 95m # Jangan di hapus text line (> reading)
 
 retVal=$?
 timeEnd
