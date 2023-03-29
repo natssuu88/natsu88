@@ -8,8 +8,8 @@ source $CIRRUS_WORKING_DIR/script/config
 timeStart
 
 . build/envsetup.sh
-export BUILD_USERNAME=$BUILD_USERNAME
-export BUILD_HOSTNAME=$BUILD_HOSTNAME
+export BUILD_USERNAME=zacky
+export BUILD_HOSTNAME=android-build
 export ALLOW_MISSING_DEPENDENCIES=true
 lunch havoc_whyred-userdebug
 mkfifo reading # Jangan di Hapus
