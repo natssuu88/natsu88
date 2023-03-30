@@ -7,6 +7,12 @@ repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync 
 source $CIRRUS_WORKING_DIR/script/config
 timeStart
 
+mkdir tempcc
+export USE_CCACHE=1
+export CCACHE_EXEC=/usr/bin/ccache
+export CCACHE_DIR=$PWD/tempcc
+ccache -M 100G -F 0
+
 . build/envsetup.sh
 export BUILD_USERNAME=zacky
 export BUILD_HOSTNAME=android-build
